@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: SOFY Public Applications API
+  version: 2026-07
+  description: 'The SOFY Public API lets you drive the SOFY AI testing platform from CI/CD and automation systems: upload application builds, trigger scheduled test runs, poll their status, list test-run groups, and abort runs. Captured faithfully from the public SOFY documentation at docs.sofy.ai; SOFY does not publish a machine-readable OpenAPI document, so this specification was authored from the documented endpoints, headers, parameters, and example responses. All operations authenticate with an API access key passed in the `x-sofy-auth-key` header, generated under Account Settings > API Key.'
+  contact:
+    name: SOFY Support
+    url: https://sofy.ai/contact-us/
+  x-apievangelist-provenance:
+    method: searched
+    source:
+    - https://docs.sofy.ai/schedule-runs/triggering-scheduled-runs-with-apis
+    - https://docs.sofy.ai/schedule-runs/scheduled-run-status-endpoints-migration
+    - https://docs.sofy.ai/schedule-runs/fetch-schedule-test-run-group-ids-endpoint-migration
+    - https://docs.sofy.ai/schedule-runs/abort-scheduled-runs-using-c-url-commands-1
+    - https://docs.sofy.ai/upload-applications/upload-application-endpoints-migration-and-route-errors
+    - https://docs.sofy.ai/account-setting/generating-api-access-keys
+servers:
+- url: https://public.sofy.ai
+  description: SOFY public API gateway
+security:
+- sofyAuthKey: []
+tags:
+- name: Applications
+  description: Upload and manage application builds under test.
+paths:
+  /parser-microservice/build-upload:
+    post:
+      operationId: uploadApplication
+      tags:
+      - Applications
+      summary: Upload an application build
+      description: Upload an APK or IPA build to SOFY for testing. The file is sent as multipart/form-data. Returns an `appHash` used to reference the build in subsequent scheduled runs.
+      parameters:
+      - name: userFriendlyBuildName
+        in: query
+        required: true
+        description: Human-readable name for the uploaded build.
+        schema:
+          type: string
+        example: Oct-release
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                applicationFile:
+                  type: string
+                  format: binary
+                  description: The APK or IPA build file. Other extensions are not supported.
+                ApplicationGUID:
+                  type: string
+                  description: Existing application GUID to attach the build to; empty for a new application.
+                CertificateName:
+                  type: string
+                  description: Optional signing certificate name.
+              required:
+              - applicationFile
+      responses:
+        '200':
+          description: Application uploaded successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      appHash:
+                        type: string
+                  message:
+                    type: string
+              example:
+                data:
+                  appHash: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                message: Application Upload Successful.
+        '400':
+          description: 'Bad request. Causes include: subscription plan has expired and requires renewal; build already exists; no active release found for this application; no application exists against this applicationGUID; missing required headers (x-sofy-auth-key absent).'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: No user found (expired subscription or invalid auth key).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: 'Server error. Causes include: corrupt or incomplete data; manifest file could not be found; files with extensions other than APK or IPA not supported.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            details:
+              type: string
+            timestamp:
+              type: string
+              format: date-time
+      example:
+        error:
+          message: Error message.
+          details: Error details.
+          timestamp: '2023-10-23T09:23:51.845Z'
+  securitySchemes:
+    sofyAuthKey:
+      type: apiKey
+      in: header
+      name: x-sofy-auth-key
+      description: API access key generated under Account Settings > API Key. Required on every request.
