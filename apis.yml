@@ -1,7 +1,28 @@
 aid: sofy
 name: SOFY
-description: SOFY is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  SOFY is an AI-powered software testing platform that autonomously writes,
+  executes, and maintains no-code tests across mobile, web, API, and enterprise
+  applications. Testers describe intent in natural language and SOFY's AI agents
+  generate and self-heal the automation as the app changes, running against
+  2,000+ real devices in the cloud plus web and ERP surfaces (SAP, Dynamics 365).
+  SOFY exposes a public REST API at https://public.sofy.ai for CI/CD automation
+  (GitHub Actions, GitLab, Jenkins, Azure DevOps): upload application builds,
+  trigger scheduled test runs, poll status, and abort runs, with outbound
+  webhooks on run completion. SOFY is a portfolio company of 500 Global.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://web.sofy.ai/assets/icons/sofy-icon.svg
 url: https://raw.githubusercontent.com/api-evangelist/sofy/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,15 +32,111 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
 tags:
 - Company
-apis: []
+- AI Testing
+- Test Automation
+- Mobile Testing
+- QA
+- No-Code
+- Continuous Testing
+- DevOps
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: sofy:sofy-applications-api
+  name: SOFY Applications API
+  description: Upload and manage application builds under test.
+  humanURL: https://docs.sofy.ai/
+  baseURL: https://public.sofy.ai
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/sofy-applications-api-openapi.yml
+  - type: Authentication
+    url: authentication/sofy-authentication.yml
+  - type: APIReference
+    url: https://docs.sofy.ai/schedule-runs
+  - type: Webhooks
+    url: asyncapi/sofy-webhooks.yml
+- aid: sofy:sofy-scheduled-runs-api
+  name: SOFY Scheduled Runs API
+  description: Trigger, monitor, and abort scheduled test runs.
+  humanURL: https://docs.sofy.ai/
+  baseURL: https://public.sofy.ai
+  tags:
+  - Scheduled Runs
+  properties:
+  - type: OpenAPI
+    url: openapi/sofy-scheduled-runs-api-openapi.yml
+  - type: Authentication
+    url: authentication/sofy-authentication.yml
+  - type: APIReference
+    url: https://docs.sofy.ai/schedule-runs
+  - type: Webhooks
+    url: asyncapi/sofy-webhooks.yml
 common:
+- type: DomainSecurity
+  url: security/sofy-domain-security.yml
 - type: Website
   url: https://sofy.ai
+- type: DeveloperPortal
+  url: https://docs.sofy.ai/
+- type: Documentation
+  url: https://docs.sofy.ai/
+- type: APIReference
+  url: https://docs.sofy.ai/schedule-runs
+- type: GettingStarted
+  url: https://docs.sofy.ai/getting-started
+- type: OpenAPI
+  url: openapi/sofy-public-api-openapi.yml
+- type: Authentication
+  url: authentication/sofy-authentication.yml
+- type: Conventions
+  url: conventions/sofy-conventions.yml
+- type: ErrorCatalog
+  url: errors/sofy-problem-types.yml
+- type: Webhooks
+  url: asyncapi/sofy-webhooks.yml
+- type: ChangeLog
+  url: changelog/sofy-changelog.yml
+- type: Lifecycle
+  url: lifecycle/sofy-lifecycle.yml
+- type: Conformance
+  url: conformance/sofy-conformance.yml
+- type: DataModel
+  url: data-model/sofy-data-model.yml
+- type: MCPServer
+  url: mcp/sofy-mcp.yml
+- type: AgentSkill
+  url: skills/sofy-upload-and-run-tests.md
+- type: AgentSkill
+  url: skills/sofy-monitor-and-abort-run.md
+- type: Overlay
+  url: overlays/sofy-public-api-overlay.yaml
+- type: LLMsTxt
+  url: llms/sofy-llms.txt
+- type: Support
+  url: https://sofy.ai/contact-us/
+- type: Blog
+  url: https://sofy.ai/blog/
+- type: Integrations
+  url: https://sofy.ai/integrations/
+- type: Pricing
+  url: https://sofy.ai/Pricing/
+- type: SignUp
+  url: https://web.sofy.ai/register
+- type: TermsOfService
+  url: https://sofy.ai/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://sofy.ai/privacy-policy/

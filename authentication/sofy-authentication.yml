@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sofy.ai/account-setting/generating-api-access-keys
+docs: https://docs.sofy.ai/account-setting/generating-api-access-keys
+description: >-
+  SOFY's public API authenticates with a single API access key passed in the
+  `x-sofy-auth-key` request header. The key is generated in the SOFY web app
+  under Account Settings > API Key and is scoped to the subscription. There is
+  no OAuth or OpenID Connect surface; the key is a bearer-style secret with no
+  per-scope granularity.
+summary:
+  types:
+    - apiKey
+  api_key_in:
+    - header
+  oauth2_flows: []
+schemes:
+  - name: sofyAuthKey
+    type: apiKey
+    in: header
+    key_name: x-sofy-auth-key
+    description: >-
+      Subscription API key from Account > Account Settings > API Key. Required on
+      every request. A missing header returns 400 "Missing required headers"; an
+      invalid/expired key returns 401 "No user found".
+    sources:
+      - openapi/sofy-public-api-openapi.yml

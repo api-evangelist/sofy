@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sofy.ai/
+description: >-
+  Cross-cutting request/response conventions for the SOFY Public API, captured
+  from docs.sofy.ai and derived from the documented endpoints. SOFY exposes a
+  small task-automation API (upload build, trigger/monitor/abort scheduled
+  runs) over HTTPS; parameters are passed largely via the URL and multipart
+  form data, and responses are JSON.
+base_url: https://public.sofy.ai
+api_style: REST over HTTPS; query/path parameters and multipart form uploads; JSON responses.
+authentication:
+  scheme: API key in the `x-sofy-auth-key` header
+  docs: https://docs.sofy.ai/account-setting/generating-api-access-keys
+  detail: authentication/sofy-authentication.yml
+idempotency:
+  supported: false
+  notes: >-
+    SOFY does not document an idempotency-key mechanism. Trigger/abort actions
+    are addressed by scheduled-run GUID and test-run-group ID rather than a
+    client-supplied idempotency key.
+pagination:
+  supported: false
+  notes: >-
+    No pagination parameters are documented; list endpoints (test-run-groups)
+    return the full set for a scheduled run.
+versioning:
+  scheme: none-in-path
+  notes: >-
+    Endpoints are unversioned in the path (microservice-prefixed routes). Product
+    changes are announced monthly in the release notes.
+  changelog: https://docs.sofy.ai/release-notes/
+error_envelope:
+  shape: '{ "error": { "message": string, "details": string, "timestamp": ISO-8601 } }'
+  detail: errors/sofy-problem-types.yml
+  notes: >-
+    Custom JSON error envelope (not RFC 9457 problem+json). Successful bodies use
+    a `{ "data": ..., "message": ... }` envelope.
+rate_limit_signaling:
+  documented: false
+webhooks:
+  supported: true
+  detail: asyncapi/sofy-webhooks.yml
+  notes: >-
+    Outbound webhooks on scheduled-run completion; configured via SOFY CSM rather
+    than self-serve API.

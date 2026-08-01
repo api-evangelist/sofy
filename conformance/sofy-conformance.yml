@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sofy-public-api-openapi.yml
+description: >-
+  Cross-cutting standards conformance for the SOFY Public API, derived from the
+  captured OpenAPI and the SOFY docs. SOFY uses a simple API-key auth model and
+  a custom JSON error envelope, so most identity/error standards do not apply.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: API uses a single apiKey header (x-sofy-auth-key); no OAuth2 flows documented.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom {error:{message,details,timestamp}} envelope, not application/problem+json.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset/Deprecation header policy published.
+  - id: webhooks
+    conforms: true
+    evidence: Documents outbound webhooks with a JSON payload on test completion.
+  - id: rest-over-https
+    conforms: true
+    evidence: All endpoints served over HTTPS with JSON responses.

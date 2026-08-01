@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for SOFY Public API
+  version: 1.0.0
+extends: openapi/sofy-public-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 3
+      x-apievangelist-notes: >-
+        Small task-automation API captured from docs.sofy.ai (SOFY publishes no
+        machine-readable OpenAPI). apiKey auth via x-sofy-auth-key; custom JSON
+        error envelope; outbound webhooks on test completion.
+  - target: $.info
+    update:
+      x-artifact-crosslinks:
+        authentication: authentication/sofy-authentication.yml
+        conventions: conventions/sofy-conventions.yml
+        errors: errors/sofy-problem-types.yml
+        webhooks: asyncapi/sofy-webhooks.yml
+        changelog: changelog/sofy-changelog.yml

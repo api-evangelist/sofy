@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sofy-public-api-openapi.yml
+description: >-
+  Entity-relationship model derived from the SOFY Public API endpoints and
+  documented response fields. The API is task-oriented (build upload + scheduled
+  test execution); the core entities are the uploaded application build, the
+  scheduled run configuration, and the test-run groups produced by executing it.
+entities:
+  - name: Application
+    description: An application under test, referenced by ApplicationGUID.
+    identifiers:
+      - ApplicationGUID
+  - name: Build
+    description: An uploaded APK/IPA build of an application, referenced by appHash.
+    identifiers:
+      - appHash
+    fields:
+      - userFriendlyBuildName
+    relationships:
+      - belongs_to: Application
+        via: ApplicationGUID
+  - name: ScheduledRun
+    description: A configured scheduled test run, referenced by its GUID.
+    identifiers:
+      - scheduledRunGuid
+    fields:
+      - scheduledRunName
+  - name: TestRunGroup
+    description: >-
+      A group of test executions produced by triggering a scheduled run against
+      a build and devices.
+    identifiers:
+      - testRunGroupId
+    fields:
+      - scenarioName
+      - scheduledAt
+      - build
+      - device
+      - status
+      - executedAt
+    relationships:
+      - belongs_to: ScheduledRun
+        via: scheduledRunGuid
+      - references: Build
+        via: appHash
+  - name: Device
+    description: A real device the run executes on, referenced by device serial.
+    identifiers:
+      - deviceSerial

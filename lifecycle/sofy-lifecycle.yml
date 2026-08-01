@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sofy.ai/
+description: >-
+  Lifecycle posture for the SOFY Public API, captured from docs.sofy.ai. SOFY
+  ships product updates on a monthly cadence documented in the release notes.
+  No public status page, formal SLA document, or dated API deprecation policy
+  was found at the time of capture; absence is recorded as such.
+versioning:
+  scheme: unversioned-path
+  notes: >-
+    API routes are microservice-prefixed and unversioned in the path; product
+    changes are announced monthly.
+  changelog: https://docs.sofy.ai/release-notes/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No published RFC 8594 Sunset/Deprecation header policy or dated deprecation
+    schedule found. Some documented endpoints are labeled "migration" in the
+    docs (route migrations), but no formal deprecation policy is published.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+deprecated_operations: []

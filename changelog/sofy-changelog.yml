@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sofy.ai/release-notes/
+description: >-
+  Recent entries from the SOFY release notes. SOFY ships a monthly product
+  update stream (month/year scheme) rather than a semantically versioned API.
+  Captured window below is the most recent set of dated entries verbatim from
+  the release-notes page.
+scheme: month-year
+current: June 2026
+url: https://docs.sofy.ai/release-notes/
+entries:
+  - version: June 2026
+    highlights: >-
+      Drag & Drop Automation — SOFY now supports recording drag & drop gestures
+      as native automation steps, enabling validation of swipe-based
+      interactions such as reordering lists and moving cards.
+  - version: May 2026
+    highlights: >-
+      Regex Support for Numeric Assertions — Numeric Assert steps now support
+      regex-based validations for dynamic numeric values and flexible data
+      patterns.
+  - version: April 2026
+    highlights: >-
+      Slack Integration — a webhook-styled integration that delivers test
+      execution notifications and updates as messages into a Slack workspace.
+  - version: March 2026
+    breaking: false
+    highlights: >-
+      Run Only Failed Tests via API — trigger schedule executions via API for
+      failed or error test cases only, reducing execution time.
+  - version: February 2026
+    highlights: >-
+      Specify Build Before Device Acquisition — select a build other than the
+      latest before acquiring a device in Sofy Lab.
+  - version: January 2026
+    highlights: >-
+      Paste from Clipboard in Sofy Lab — paste text directly from a device
+      clipboard during test recording and execution.
+  - version: December 2025
+    highlights: >-
+      Matching Algorithm Enhancement — new matching category for scenarios where
+      primary identifiers (text, content description, resource ID) are missing.
+  - version: November 2025
+    highlights: >-
+      Matching Algorithm Improvements — updated categorization better handles
+      missing or null attributes, reducing false positives.

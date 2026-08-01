@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Packaged Agent Skills generated from the captured SOFY Public API OpenAPI.
+  Every step is grounded in an operationId verified verbatim in
+  ../openapi/sofy-public-api-openapi.yml; cross-cutting rules cite
+  ../conventions/, ../errors/, and ../authentication/.
+skills:
+  - file: sofy-upload-and-run-tests.md
+    name: Upload a build and run scheduled tests
+    api: openapi/sofy-public-api-openapi.yml
+    operations: [uploadApplication, triggerScheduledRun, getScheduledRunStatus]
+  - file: sofy-monitor-and-abort-run.md
+    name: Monitor and abort a scheduled run
+    api: openapi/sofy-public-api-openapi.yml
+    operations: [fetchTestRunGroupIds, getScheduledRunStatus, abortScheduledRun]

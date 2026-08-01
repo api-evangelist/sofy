@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/sofy-public-api-openapi.yml
+description: >-
+  Candidate MCP server for the SOFY Public API, derived one-tool-per-operation
+  from the captured OpenAPI. SOFY publishes no official hosted/remote MCP server
+  as of this capture; this is a governance starting point, not a published
+  server.
+server:
+  name: sofy
+  transport: http
+  url: null
+tools:
+  - name: upload_application
+    description: Upload an APK or IPA build and receive its appHash.
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication
+  - name: trigger_scheduled_run
+    description: Queue a configured scheduled run against a build and devices.
+    source_operation: openapi/sofy-public-api-openapi.yml#triggerScheduledRun
+  - name: get_scheduled_run_status
+    description: Get the execution status of a test run group in a scheduled run.
+    source_operation: openapi/sofy-public-api-openapi.yml#getScheduledRunStatus
+  - name: fetch_test_run_group_ids
+    description: List the test run groups for a scheduled run.
+    source_operation: openapi/sofy-public-api-openapi.yml#fetchTestRunGroupIds
+  - name: abort_scheduled_run
+    description: Abort an active scheduled run (optionally a specific test run group).
+    source_operation: openapi/sofy-public-api-openapi.yml#abortScheduledRun

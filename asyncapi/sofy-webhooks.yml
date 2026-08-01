@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sofy.ai/integration-category/integrating-with-sofy-via-webhooks
+type: Webhooks
+description: >-
+  SOFY delivers outbound webhooks when a scheduled test run completes and all
+  results are available, or when a run is manually stopped. Webhooks are not
+  self-serve: a customer creates an HTTP POST endpoint and provides the URL plus
+  API access token to the SOFY CSM team, who configure and validate delivery.
+  Webhooks are then enabled per-schedule via an "Add Webhook" option in the run
+  settings. SOFY publishes no AsyncAPI document; this captures the webhook
+  catalog verbatim from the docs.
+delivery:
+  transport: HTTP POST to a customer-provided endpoint
+  configuration: Via SOFY CSM (endpoint URL + API access token), then enabled per-schedule
+  auth: Customer-provided API access token supplied at configuration time
+events:
+  - name: test_completion
+    trigger: >-
+      A scheduled test run completes and all results are available, or a run is
+      manually stopped.
+    not_triggered_for:
+      - draft tests
+      - device unavailability
+      - concurrent session / session-limit failures
+      - timeout scenarios
+    payload_example: |
+      {
+        "event": "test_completion",
+        "timestamp": "2024-04-15T12:34:56Z",
+        "data": {
+          "test_id": "123456",
+          "status": "passed",
+          "details": "Test completed successfully with no errors."
+        }
+      }
+    payload_fields:
+      - name: event
+        description: Event type (e.g. test_completion).
+      - name: timestamp
+        description: ISO 8601 timestamp.
+      - name: data.test_id
+        description: Identifier of the test.
+      - name: data.status
+        description: Result status (e.g. passed).
+      - name: data.details
+        description: Human-readable result summary.
+scope: >-
+  You receive data for all your schedule runs via the webhook unless an
+  exclusion condition applies (draft tests, offline devices, timeouts, user
+  cancellation).

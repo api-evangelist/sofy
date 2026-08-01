@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sofy.ai/upload-applications/upload-application-endpoints-migration-and-route-errors
+format: custom-json
+description: >-
+  Error catalog for the SOFY Public API, derived from the documented route
+  errors on the Upload Application endpoint and enriched from the docs. Errors
+  use a custom JSON envelope (not RFC 9457): `{ "error": { "message", "details",
+  "timestamp" } }`. Titles/causes below are quoted verbatim from the SOFY docs.
+envelope:
+  field: error
+  properties: [message, details, timestamp]
+problems:
+  - status: 400
+    title: Subscription plan has expired and requires renewal
+    cause: Expired subscription
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication
+  - status: 400
+    title: Build already exists
+    cause: Duplicate build upload attempt
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication
+  - status: 400
+    title: No active release found for this application
+    cause: Missing active release configuration
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication
+  - status: 400
+    title: No application exists against this applicationGUID
+    cause: Invalid or deleted app GUID
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication
+  - status: 400
+    title: Missing required headers
+    cause: The x-sofy-auth-key header is absent
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication
+  - status: 401
+    title: No user found
+    cause: Expired subscription or invalid auth key
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication
+  - status: 500
+    title: Corrupt or incomplete data
+    cause: Malformed application file
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication
+  - status: 500
+    title: Manifest file could not be found
+    cause: Missing manifest in build
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication
+  - status: 500
+    title: Files with extensions other than APK or IPA not supported
+    cause: Wrong file format uploaded
+    source_operation: openapi/sofy-public-api-openapi.yml#uploadApplication

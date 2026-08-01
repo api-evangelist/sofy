@@ -1,0 +1,16 @@
+{
+  "provider": "sofy",
+  "sources": [
+    "sofy-applications-api-openapi.yml",
+    "sofy-scheduled-runs-api-openapi.yml"
+  ],
+  "outputs": [
+    "sofy-applications-api-openapi.yml",
+    "sofy-scheduled-runs-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
