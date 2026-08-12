@@ -99,7 +99,7 @@ common:
 - type: GettingStarted
   url: https://docs.sofy.ai/getting-started
 - type: OpenAPI
-  url: openapi/sofy-public-api-openapi.yml
+  url: openapi/_original/sofy-public-api-openapi.yml
 - type: Authentication
   url: authentication/sofy-authentication.yml
 - type: Conventions
