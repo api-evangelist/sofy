@@ -1,0 +1,501 @@
+{
+  "item": [
+    {
+      "id": "ad8ed991-d4cd-4df1-8354-5635dd18e108",
+      "name": "Scheduled Runs",
+      "description": {
+        "content": "Trigger, monitor, and abort scheduled test runs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "133dcb42-cd9d-49f3-9be3-e660653aba73",
+          "name": "Trigger a scheduled run",
+          "request": {
+            "name": "Trigger a scheduled run",
+            "description": {
+              "content": "Queue a previously configured scheduled run for execution against the given build and devices. No request body is required; all parameters are passed via the URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scheduler-microservice",
+                "scheduled-runs",
+                ":scheduledGUID",
+                "execute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appHash",
+                  "value": "<string>",
+                  "description": "(Required) The application hash value returned by uploadApplication."
+                },
+                {
+                  "disabled": false,
+                  "key": "deviceSerials",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of device identifiers to run against."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduledGUID",
+                  "description": "(Required) The scheduled run identifier from your configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3811283f-d2bc-408c-8a39-12031e0caaad",
+              "name": "Test runs are scheduled and in queue.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scheduler-microservice",
+                    "scheduled-runs",
+                    ":scheduledGUID",
+                    "execute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appHash",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deviceSerials",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduledGUID",
+                      "description": "(Required) The scheduled run identifier from your configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-sofy-auth-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"testGroupsRunId\": \"123456\",\n  \"message\": \"Test runs are scheduled and in queue.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3484af19-ad19-4ef5-a624-d9f2956932ff",
+          "name": "Get scheduled run status",
+          "request": {
+            "name": "Get scheduled run status",
+            "description": {
+              "content": "Retrieve the execution status for a specific test run group within a scheduled run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scheduler-microservice",
+                "scheduled-runs",
+                ":scheduledRunGuid",
+                "status",
+                ":testRunGroupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduledRunGuid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "testRunGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c368526-6e69-4201-9431-c53ecd5846c4",
+              "name": "Status of the scheduled run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scheduler-microservice",
+                    "scheduled-runs",
+                    ":scheduledRunGuid",
+                    "status",
+                    ":testRunGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduledRunGuid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "testRunGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-sofy-auth-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"scheduledRunName\": \"string\",\n  \"testRunGroupId\": \"string\",\n  \"scenarioName\": \"string\",\n  \"scheduledAt\": \"2024-09-07T05:24:38.475Z\",\n  \"build\": \"string\",\n  \"device\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0c77126-3765-4e57-9b94-fdbee938c923",
+          "name": "Fetch test run group IDs",
+          "request": {
+            "name": "Fetch test run group IDs",
+            "description": {
+              "content": "List the test run groups for a scheduled run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scheduler-microservice",
+                "scheduled-runs",
+                ":scheduledRunGuid",
+                "test-run-groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduledRunGuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2143409a-3676-4b4f-89f5-2048b5a81cba",
+              "name": "Test run groups for the scheduled run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scheduler-microservice",
+                    "scheduled-runs",
+                    ":scheduledRunGuid",
+                    "test-run-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduledRunGuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-sofy-auth-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"testRunGroupId\": \"string\",\n    \"executedAt\": \"1970-05-14T02:55:57.114Z\",\n    \"status\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"testRunGroupId\": \"string\",\n    \"executedAt\": \"1991-05-11T03:14:31.147Z\",\n    \"status\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "569d2604-f4cb-46ac-81b4-d94b3ba732bc",
+          "name": "Abort a scheduled run",
+          "request": {
+            "name": "Abort a scheduled run",
+            "description": {
+              "content": "Abort an active scheduled run. If testRunGroupId is omitted, all active executions under the scheduled run are aborted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scheduler-microservice",
+                "public",
+                "test-run",
+                "abort",
+                ":scheduledRunGuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "testRunGroupId",
+                  "value": "<string>",
+                  "description": "Specific test run group to abort; omit to abort all active executions."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduledRunGuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a9e0542-c777-4f73-8757-9e9a4b8e3093",
+              "name": "Scheduled run aborted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scheduler-microservice",
+                    "public",
+                    "test-run",
+                    "abort",
+                    ":scheduledRunGuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "testRunGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduledRunGuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-sofy-auth-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Scheduled run 0CF78E5E-05CE-4971-A954-0E3789140DFD aborted by user 5ACD1A78-18FF-4213-B5F5-671C4B2F2B9D successfully.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public.sofy.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-sofy-auth-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "267bccd1-ef99-445e-999e-909ebeb366e1",
+    "name": "SOFY Public Applications Scheduled Runs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SOFY Public API lets you drive the SOFY AI testing platform from CI/CD and automation systems: upload application builds, trigger scheduled test runs, poll their status, list test-run groups, and abort runs. Captured faithfully from the public SOFY documentation at docs.sofy.ai; SOFY does not publish a machine-readable OpenAPI document, so this specification was authored from the documented endpoints, headers, parameters, and example responses. All operations authenticate with an API access key passed in the `x-sofy-auth-key` header, generated under Account Settings > API Key.\n\nContact Support:\n Name: SOFY Support",
+      "type": "text/plain"
+    }
+  }
+}

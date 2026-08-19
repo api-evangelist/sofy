@@ -1,0 +1,438 @@
+{
+  "item": [
+    {
+      "id": "2975897a-94ec-4ced-9873-5d8b0c5f0949",
+      "name": "Applications",
+      "description": {
+        "content": "Upload and manage application builds under test.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5ff14abb-ed74-405f-830e-3ee15847f488",
+          "name": "Upload an application build",
+          "request": {
+            "name": "Upload an application build",
+            "description": {
+              "content": "Upload an APK or IPA build to SOFY for testing. The file is sent as multipart/form-data. Returns an `appHash` used to reference the build in subsequent scheduled runs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "parser-microservice",
+                "build-upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userFriendlyBuildName",
+                  "value": "<string>",
+                  "description": "(Required) Human-readable name for the uploaded build."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "applicationFile",
+                  "type": "file",
+                  "description": "(Required) The APK or IPA build file. Other extensions are not supported."
+                },
+                {
+                  "key": "ApplicationGUID",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Existing application GUID to attach the build to; empty for a new application."
+                },
+                {
+                  "key": "CertificateName",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional signing certificate name."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e0a6eb5c-f7ac-40d6-bb66-e12c0e73686c",
+              "name": "Application uploaded successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parser-microservice",
+                    "build-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userFriendlyBuildName",
+                      "value": "Oct-release"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-sofy-auth-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The APK or IPA build file. Other extensions are not supported.",
+                        "type": "text/plain"
+                      },
+                      "key": "applicationFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Existing application GUID to attach the build to; empty for a new application.",
+                        "type": "text/plain"
+                      },
+                      "key": "ApplicationGUID",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional signing certificate name.",
+                        "type": "text/plain"
+                      },
+                      "key": "CertificateName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"appHash\": \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\"\n  },\n  \"message\": \"Application Upload Successful.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e0f0a76-72d1-409b-a4d1-272d42cacce9",
+              "name": "Bad request. Causes include: subscription plan has expired and requires renewal; build already exists; no active release found for this application; no application exists against this applicationGUID; missing required headers (x-sofy-auth-key absent).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parser-microservice",
+                    "build-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userFriendlyBuildName",
+                      "value": "Oct-release"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-sofy-auth-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The APK or IPA build file. Other extensions are not supported.",
+                        "type": "text/plain"
+                      },
+                      "key": "applicationFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Existing application GUID to attach the build to; empty for a new application.",
+                        "type": "text/plain"
+                      },
+                      "key": "ApplicationGUID",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional signing certificate name.",
+                        "type": "text/plain"
+                      },
+                      "key": "CertificateName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"Error message.\",\n    \"details\": \"Error details.\",\n    \"timestamp\": \"2023-10-23T09:23:51.845Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dce45389-c492-45ce-8e01-2005e18086d9",
+              "name": "No user found (expired subscription or invalid auth key).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parser-microservice",
+                    "build-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userFriendlyBuildName",
+                      "value": "Oct-release"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-sofy-auth-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The APK or IPA build file. Other extensions are not supported.",
+                        "type": "text/plain"
+                      },
+                      "key": "applicationFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Existing application GUID to attach the build to; empty for a new application.",
+                        "type": "text/plain"
+                      },
+                      "key": "ApplicationGUID",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional signing certificate name.",
+                        "type": "text/plain"
+                      },
+                      "key": "CertificateName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"Error message.\",\n    \"details\": \"Error details.\",\n    \"timestamp\": \"2023-10-23T09:23:51.845Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d53f2fe4-13ba-403b-9490-ed899d374e74",
+              "name": "Server error. Causes include: corrupt or incomplete data; manifest file could not be found; files with extensions other than APK or IPA not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parser-microservice",
+                    "build-upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userFriendlyBuildName",
+                      "value": "Oct-release"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-sofy-auth-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The APK or IPA build file. Other extensions are not supported.",
+                        "type": "text/plain"
+                      },
+                      "key": "applicationFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Existing application GUID to attach the build to; empty for a new application.",
+                        "type": "text/plain"
+                      },
+                      "key": "ApplicationGUID",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional signing certificate name.",
+                        "type": "text/plain"
+                      },
+                      "key": "CertificateName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"Error message.\",\n    \"details\": \"Error details.\",\n    \"timestamp\": \"2023-10-23T09:23:51.845Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public.sofy.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-sofy-auth-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5f51faf8-dfb0-444e-bfa9-75519327aebd",
+    "name": "SOFY Public Applications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SOFY Public API lets you drive the SOFY AI testing platform from CI/CD and automation systems: upload application builds, trigger scheduled test runs, poll their status, list test-run groups, and abort runs. Captured faithfully from the public SOFY documentation at docs.sofy.ai; SOFY does not publish a machine-readable OpenAPI document, so this specification was authored from the documented endpoints, headers, parameters, and example responses. All operations authenticate with an API access key passed in the `x-sofy-auth-key` header, generated under Account Settings > API Key.\n\nContact Support:\n Name: SOFY Support",
+      "type": "text/plain"
+    }
+  }
+}

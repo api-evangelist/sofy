@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SOFY Public Applications Scheduled Runs API",
+    "version": "2026-07"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-sofy-auth-key",
+      "value": "{{x-sofy-auth-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scheduled Runs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Trigger a scheduled run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public.sofy.ai/scheduler-microservice/scheduled-runs/:scheduledGUID/execute",
+            "params": [
+              {
+                "name": "scheduledGUID",
+                "value": "",
+                "type": "path",
+                "description": "The scheduled run identifier from your configuration."
+              },
+              {
+                "name": "appHash",
+                "value": "",
+                "type": "query",
+                "description": "The application hash value returned by uploadApplication."
+              },
+              {
+                "name": "deviceSerials",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of device identifiers to run against."
+              }
+            ]
+          },
+          "docs": "Queue a previously configured scheduled run for execution against the given build and devices. No request body is required; all parameters are passed via the URL."
+        },
+        {
+          "info": {
+            "name": "Get scheduled run status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.sofy.ai/scheduler-microservice/scheduled-runs/:scheduledRunGuid/status/:testRunGroupId",
+            "params": [
+              {
+                "name": "scheduledRunGuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "testRunGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the execution status for a specific test run group within a scheduled run."
+        },
+        {
+          "info": {
+            "name": "Fetch test run group IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.sofy.ai/scheduler-microservice/scheduled-runs/:scheduledRunGuid/test-run-groups",
+            "params": [
+              {
+                "name": "scheduledRunGuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List the test run groups for a scheduled run."
+        },
+        {
+          "info": {
+            "name": "Abort a scheduled run",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://public.sofy.ai/scheduler-microservice/public/test-run/abort/:scheduledRunGuid",
+            "params": [
+              {
+                "name": "scheduledRunGuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "testRunGroupId",
+                "value": "",
+                "type": "query",
+                "description": "Specific test run group to abort; omit to abort all active executions."
+              }
+            ]
+          },
+          "docs": "Abort an active scheduled run. If testRunGroupId is omitted, all active executions under the scheduled run are aborted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

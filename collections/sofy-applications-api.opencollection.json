@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SOFY Public Applications API",
+    "version": "2026-07"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-sofy-auth-key",
+      "value": "{{x-sofy-auth-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload an application build",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public.sofy.ai/parser-microservice/build-upload",
+            "params": [
+              {
+                "name": "userFriendlyBuildName",
+                "value": "Oct-release",
+                "type": "query",
+                "description": "Human-readable name for the uploaded build."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "applicationFile",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ApplicationGUID",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CertificateName",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload an APK or IPA build to SOFY for testing. The file is sent as multipart/form-data. Returns an `appHash` used to reference the build in subsequent scheduled runs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
