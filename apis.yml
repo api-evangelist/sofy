@@ -59,6 +59,8 @@ apis:
   humanURL: https://docs.sofy.ai/
   baseURL: https://public.sofy.ai
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
