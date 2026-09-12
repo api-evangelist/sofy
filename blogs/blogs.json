@@ -3,12 +3,12 @@
   "feeds": [
     {
       "source": "https://sofy.ai/contact-us/",
-      "feed_url": "https://sofy.ai/contact-us/",
+      "feed_url": "https://sofy.ai/feed/",
       "title": "",
-      "saved": 0,
-      "method": "none"
+      "saved": 4,
+      "method": "discovered"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-08-30T22:33:40Z"
+  "post_count": 4,
+  "fetched": "2026-09-06T19:17:18Z"
 }
