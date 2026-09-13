@@ -5,10 +5,17 @@
       "source": "https://sofy.ai/contact-us/",
       "feed_url": "https://sofy.ai/feed/",
       "title": "",
-      "saved": 4,
+      "saved": 0,
       "method": "discovered"
+    },
+    {
+      "source": "https://sofy.ai/feed/",
+      "feed_url": "https://sofy.ai/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
-  "post_count": 4,
-  "fetched": "2026-09-06T19:17:18Z"
+  "post_count": 7,
+  "fetched": "2026-09-13T13:00:00Z"
 }
