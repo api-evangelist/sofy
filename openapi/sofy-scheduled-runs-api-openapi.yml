@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SOFY Public Applications Scheduled Runs API
+  title: SOFY Public Scheduled Runs API
   version: 2026-07
-  description: 'The SOFY Public API lets you drive the SOFY AI testing platform from CI/CD and automation systems: upload application builds, trigger scheduled test runs, poll their status, list test-run groups, and abort runs. Captured faithfully from the public SOFY documentation at docs.sofy.ai; SOFY does not publish a machine-readable OpenAPI document, so this specification was authored from the documented endpoints, headers, parameters, and example responses. All operations authenticate with an API access key passed in the `x-sofy-auth-key` header, generated under Account Settings > API Key.'
+  description: 'The SOFY Public API lets you drive the SOFY AI testing platform from CI/CD and automation systems: upload application builds, trigger scheduled test runs, poll their status, list test-run groups, and abort runs.'
   contact:
     name: SOFY Support
     url: https://sofy.ai/contact-us/

@@ -1,0 +1,30 @@
+# Front Door AI Index — sofy — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: sofy
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: sofy.ai
+  final_host: sofy.ai
+  ownership: own
+  owner: sofy
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 45
+  host_score: 45
+  density: 25.08
+  words: 1794
+  tiers:
+    agentic: 8
+    core: 37
+    model: 0
+  ambiguous: 59
+  top_terms:
+    agent: 47
+    AI: 37
+    automation: 12
+    AI agent: 4
+    MCP: 2
+    agentic: 2
