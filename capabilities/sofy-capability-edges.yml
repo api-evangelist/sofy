@@ -1,0 +1,38 @@
+slug: sofy
+provider: SOFY
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Scheduled Runs
+  spec_file: sofy-scheduled-runs-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.85
+  evidence: POST /scheduler-microservice/scheduled-runs/{scheduledGUID}/execute  triggerScheduledRun;
+    GET .../status/{testRunGroupId}  getScheduledRunStatus; PUT /scheduler-microservice/public/test-run/abort/{scheduledRunGuid}  abortScheduledRun
+  reason: Operations trigger, monitor, and abort automated test runs on an AI test-automation platform
+    — squarely automated test suite stewardship under Software Quality Engineering. Slight residual ambiguity
+    with CI pipeline orchestration prevents 0.95.
+- tag: Applications
+  spec_file: sofy-applications-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.7
+  evidence: 'POST /parser-microservice/build-upload  uploadApplication  Upload an application build —
+    "drive the SOFY AI testing platform from CI/CD and automation systems: upload application builds,
+    trigger scheduled test runs"'
+  reason: Despite the business-sounding tag, the operation submits an application build into an automated
+    test platform, which is part of software quality engineering / automated test execution. Single operation
+    and a CI/CD framing that also touches continuous integration keep confidence moderate.

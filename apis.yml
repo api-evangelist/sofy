@@ -101,6 +101,9 @@ apis:
   - type: Webhooks
     url: asyncapi/sofy-webhooks.yml
 common:
+- type: CapabilityMap
+  url: capabilities/sofy-capability-edges.yml
+  name: SOFY Business Capability Map
 - type: DomainSecurity
   url: security/sofy-domain-security.yml
 - type: Website
