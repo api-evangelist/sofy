@@ -2,8 +2,8 @@
   "repo": "sofy",
   "feeds": [
     {
-      "source": "https://sofy.ai/contact-us/",
-      "feed_url": "https://sofy.ai/feed/",
+      "source": "https://sofy.ai/blog/",
+      "feed_url": "https://sofy.ai/blog/feed/",
       "title": "",
       "saved": 0,
       "method": "discovered"
@@ -16,6 +16,6 @@
       "method": "feed"
     }
   ],
-  "post_count": 16,
-  "fetched": "2026-10-03T12:30:02Z"
+  "post_count": 20,
+  "fetched": "2026-10-10T13:15:00Z"
 }
