@@ -9,6 +9,13 @@
       "method": "discovered"
     },
     {
+      "source": "https://sofy.ai/blog/feed/",
+      "feed_url": "https://sofy.ai/blog/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://sofy.ai/feed/",
       "feed_url": "https://sofy.ai/feed/",
       "title": "",
@@ -16,6 +23,6 @@
       "method": "feed"
     }
   ],
-  "post_count": 20,
-  "fetched": "2026-10-10T13:15:00Z"
+  "post_count": 21,
+  "fetched": "2026-10-17T14:53:57Z"
 }
