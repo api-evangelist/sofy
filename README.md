@@ -64,6 +64,121 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-SOFY is a company surfaced as a portfolio company of 500-global and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+SOFY is an AI-powered software testing platform that autonomously writes, executes, and maintains no-code tests across mobile, web, API, and enterprise applications. Testers describe intent in natural language and SOFY's AI agents generate and self-heal the automation as the app changes, running against 2,000+ real devices in the cloud plus web and ERP surfaces (SAP, Dynamics 365). SOFY exposes a public REST API at https://public.sofy.ai for CI/CD automation (GitHub Actions, GitLab, Jenkins, Azure DevOps): upload application builds, trigger scheduled test runs, poll status, and abort runs, with outbound webhooks on run completion. SOFY is a portfolio company of 500 Global.
 
-Backed by: 500-global — https://sofy.ai
+**Areas:** Company · AI Testing · Test Automation · Mobile Testing · QA · No-Code · Continuous Testing · DevOps
+
+## SOFY on APIs.io
+
+Everything profiled for SOFY is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sofy/](https://apis.io/providers/sofy/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [SOFY Applications API](https://apis.io/apis/sofy/sofy-applications-api/) — Upload and manage application builds under test.
+- [SOFY Scheduled Runs API](https://apis.io/apis/sofy/sofy-scheduled-runs-api/) — Trigger, monitor, and abort scheduled test runs.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Sofy Webhooks](https://apis.io/asyncapis/sofy/sofy-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [sofy](https://apis.io/servers/sofy/sofy/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [SOFY Public Applications API](https://apis.io/collections/sofy/open-sofy-applications-api/)
+- [SOFY Public Applications Scheduled Runs API](https://apis.io/collections/sofy/open-sofy-scheduled-runs-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Sofy Public Api Overlay](https://apis.io/overlays/sofy/sofy-public-api-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Sofy Authentication](https://apis.io/security/sofy/sofy-authentication/)
+- [Sofy Domain Security](https://apis.io/security/sofy/sofy-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://sofy.ai)
+- [Documentation](https://docs.sofy.ai/)
+- [Getting started](https://docs.sofy.ai/getting-started)
+- [API reference](https://docs.sofy.ai/schedule-runs)
+- [Pricing](https://sofy.ai/Pricing/)
+- [Sign up](https://web.sofy.ai/register)
+- [Support](https://sofy.ai/contact-us/)
+- [Blog](https://sofy.ai/blog/)
+- [Terms of service](https://sofy.ai/terms-and-conditions/)
+- [Privacy policy](https://sofy.ai/privacy-policy/)
+
+## API Evangelist rating
+
+**Kin Score 44.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 59.4 |
+| Contract governance | 4.5 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 31.6 |
+
+**Agent readiness 31.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sofy/](https://apis.io/providers/sofy/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for SOFY: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sofy/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
